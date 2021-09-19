@@ -1,25 +1,20 @@
+import {Repositoryitem} from './repositoryitem'
 
-const repositoryName = "CARLOS ROBERTO";
+const informs ={
+    name: "bruce alvin",
+    description:"React JS",
+    link:"www.teste.com"
+}
+
 
 export function RepositoriList() {
+
     return <section className="repostory-list" >
         <h1> LISTA DE REPOSITORIO</h1>
         <ul>
-            <li>
-                <strong>{repositoryName}</strong>
-                <p>Forms in React</p>
-                < a href="">Acessar repositorio</a>
-            </li>
-            <li>
-            <strong>{repositoryName}</strong>
-                <p>Forms in React</p>
-                < a href="">Acessar repositorio</a>
-            </li>
-            <li>
-            <strong>{repositoryName}</strong>
-                <p>Forms in React</p>
-                < a href="">Acessar repositorio</a>
-            </li>
+           <Repositoryitem repository={informs} />
+           <Repositoryitem repository={informs} />
+         
         </ul>
     </section>
 }
