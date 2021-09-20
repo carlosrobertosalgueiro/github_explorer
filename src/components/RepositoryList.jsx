@@ -1,20 +1,23 @@
-import {Repositoryitem} from './repositoryitem'
-
-const informs ={
-    name: "bruce alvin",
-    description:"React JS",
-    link:"www.teste.com"
-}
-
+import { RepositoryItem } from './repositoryitem';
+import '../styles/repositories.scss';
+import { useEffect, useState } from 'react';
 
 export function RepositoriList() {
+
+    const [ repositories, setRepositories ] = useState([]);
+
+    useEffect(() => {
+        fetch('https://api.github.com/users/Rocketseat/repos')
+            .then(response => response.json())
+            .then(data => setRepositories(data));
+    }, []);
 
     return <section className="repostory-list" >
         <h1> LISTA DE REPOSITORIO</h1>
         <ul>
-           <Repositoryitem repository={informs} />
-           <Repositoryitem repository={informs} />
-         
+            {repositories.map(repository => (
+                <RepositoryItem key ={repository.name} repository={repository} />
+            ))}
         </ul>
     </section>
 }
